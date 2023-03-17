@@ -1,0 +1,70 @@
+.privacy {
+	padding: 40px 20px;
+	font-family: 'Poppins', sans-serif;
+	font-style: normal;
+	letter-spacing: normal;
+	font-size: 16px;
+	line-height: 22px;
+	&__title {
+		margin-bottom: 40px;
+		font-size: 26px;
+		font-weight: 700;
+		text-align: center;
+		text-decoration: underline;
+	}
+	&__subtitle {
+		margin: 15px 0;
+		padding-left: 20px;
+		font-size: 18px;
+	}
+	li {
+		margin-bottom: 5px;
+	}
+	a {
+		color: $accent-color;
+		@include mq(mob-only) {
+			font-size: 14px;
+		}
+	}
+}
+table {
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+table,
+td,
+th {
+	border: 1px solid #595959;
+}
+td,
+th {
+	padding: 10px 20px;
+	@include mq(mob-only) {
+		padding: 5px 5px;
+	}
+
+	&:nth-child(odd) {
+		width: 25%;
+		font-weight: 700;
+	}
+	&:nth-child(even) {
+		li {
+			p {
+				display: inline-block;
+				background-color: #fcf8e3;
+				border-bottom: 1px dotted $accent-color;
+			}
+		}
+	}
+}
+.table-list {
+	li {
+		&:not(:last-child) {
+			margin-bottom: 10px;
+		}
+	}
+}
+.table-responsive {
+	margin: 0 auto;
+}

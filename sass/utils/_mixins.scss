@@ -1,0 +1,71 @@
+@mixin mq($range) {
+	$mobile: 480px;
+	$tablet: 768px;
+	$desktop: 1140px;
+	@if $range == mob {
+		@media (max-width: $mobile) {
+			@content;
+		}
+	} @else if $range == pre-mob {
+		@media (max-width: #{$mobile - 0.02}) {
+			@content;
+		}
+	} @else if $range == mob-only {
+		@media (max-width: #{$tablet - 0.02}) {
+			@content;
+		}
+	} @else if $range == tab {
+		@media (min-width: $tablet) {
+			@content;
+		}
+	} @else if $range == tab-only {
+		@media (min-width: $tablet) and (max-width: #{$desktop - 0.02}) {
+			@content;
+		}
+	} @else if $range == desk {
+		@media (min-width: $desktop) {
+			@content;
+		}
+	} @else if $range == no-desk {
+		@media (max-width: #{$desktop - 0.02}) {
+			@content;
+		}
+	} @else if $range == retina {
+		@media screen and (min-device-pixel-ratio: 2),
+			screen and (-moz-min-device-pixel-ratio: 2),
+			screen and (-o-min-device-pixel-ratio: 2/1),
+			screen and (-webkit-min-device-pixel-ratio: 2),
+			screen and (min-resolution: 192dpi),
+			screen and (min-resolution: 2dppx) {
+			@content;
+		}
+	}
+}
+
+@mixin circle {
+	&:before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 36px;
+		height: 36px;
+		border-radius: 50%;
+		z-index: -1;
+		background-color: $accent-color;
+	}
+}
+@mixin line {
+	&:after {
+		content: '';
+		position: absolute;
+		display: inline-block;
+		bottom: 0;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 60px;
+		height: 3px;
+		background-color: $accent-color;
+	}
+}

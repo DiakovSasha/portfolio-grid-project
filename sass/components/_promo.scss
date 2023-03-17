@@ -1,0 +1,255 @@
+.promo {
+	height: 100vh;
+	width: 100%;
+	padding-top: 206px;
+	background-color: $main-text-color;
+	background: linear-gradient(
+			to right,
+			rgba(47, 48, 58, 0.2),
+			rgba(47, 48, 58, 0.4)
+		),
+		url(../img/portfolio-bg.jpg) 50% / cover no-repeat;
+	@include mq(mob-only) {
+		background: linear-gradient(
+				to right,
+				rgba(47, 48, 58, 0.2),
+				rgba(47, 48, 58, 0.4)
+			),
+			url(../img/portfolio-bg.jpg) 13% / cover no-repeat;
+	}
+
+	&__information {
+		max-width: 532px;
+	}
+	&__title {
+		margin-bottom: 25px;
+		font-weight: 700;
+		font-size: 48px;
+		line-height: 60px;
+		color: $second-text-color;
+		@include mq(no-desk) {
+			font-size: 36px;
+			line-height: 48px;
+		}
+		@include mq(mob-only) {
+			font-size: 26px;
+			line-height: 39px;
+		}
+	}
+	&__descr {
+		position: relative;
+		margin-left: 10px;
+		margin-bottom: 10px;
+		font-size: 16px;
+		font-weight: 700;
+		line-height: 24px;
+		color: $second-text-color;
+		z-index: 1;
+		@include circle;
+		&:before {
+			top: -25%;
+			left: -2%;
+			transform: translateX(0);
+		}
+	}
+
+	&__link {
+		display: inline-block;
+		font-weight: 700;
+		font-size: 14px;
+		line-height: 21px;
+		color: $second-text-color;
+		padding: 12px 25px;
+		box-shadow: 0px 0px 5px 4px rgba(232, 240, 231, 1);
+		transition: $transition;
+		&:hover,
+		&:focus {
+			background-color: $accent-color;
+			text-shadow: 1px 1px 1px #000;
+		}
+		&:not(:last-child) {
+			margin-right: 20px;
+		}
+
+		&-active {
+			background-color: $accent-color;
+			text-shadow: 1px 1px 1px #000;
+		}
+	}
+}
+.socials {
+	position: fixed;
+	top: 226px;
+	left: 50px;
+	width: 338px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	transform: rotate(-90deg) translate(-100%);
+	transform-origin: top left;
+	@media (max-width: 1400px) {
+		display: none;
+	}
+	&__list {
+		display: flex;
+	}
+	&__text {
+		font-weight: 700;
+		font-size: 16px;
+		line-height: 24px;
+		color: $accent-color;
+	}
+	&__line {
+		width: 70px;
+		height: 2px;
+		background-color: $accent-color;
+	}
+	&__link {
+		width: 35px;
+		height: 35px;
+
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-radius: 50%;
+	}
+	&__icon {
+		width: 20px;
+		height: 20px;
+		fill: $accent-color;
+		transform: rotate(90deg);
+		transition: $transition;
+	}
+}
+.hamburger {
+	position: absolute;
+	top: 20px;
+	right: 30px;
+	width: 36px;
+	height: 21px;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	justify-content: space-between;
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+	@include mq(mob-only) {
+		right: 20px;
+	}
+	span {
+		display: block;
+		width: 30px;
+		height: 3px;
+		background-color: $accent-color;
+		// &:not(:last-child) {
+		// 	margin-bottom: 6px;
+		// }
+		&:nth-child(2) {
+			width: 36px;
+		}
+	}
+}
+.menu {
+	&__overlay {
+		position: fixed;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+		visibility: hidden;
+		opacity: 0;
+		z-index: 9;
+		background-color: rgba(255, 255, 255, 0.75);
+		transition: $transition;
+		&.active {
+			visibility: visible;
+			opacity: 1;
+			.menu__modal {
+				left: 0;
+			}
+		}
+	}
+
+	&__modal {
+		position: relative;
+		top: 0;
+		left: -100%;
+		width: 100%;
+		max-width: 345px;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		padding: 140px 40px 40px 40px;
+		background-color: $accent-color;
+		transition: $transition;
+		@include mq(mob) {
+			max-width: 250px;
+			padding: 140px 15px 40px 15px;
+		}
+	}
+	&__item {
+		&:not(:last-child) {
+			margin-bottom: 15px;
+		}
+	}
+	&__link {
+		font-weight: 700;
+		font-size: 24px;
+		line-height: 36px;
+		color: $second-text-color;
+
+		&::before {
+			content: '';
+			display: inline-block;
+			width: 15px;
+			height: 15px;
+			margin-right: 20px;
+			border: 1px solid $main-text-color;
+			border-radius: 50%;
+			transition: $transition;
+		}
+		&:hover,
+		:focus {
+			&:before {
+				background-color: #fff;
+			}
+		}
+	}
+	&-socials {
+		&__list {
+			display: flex;
+			justify-content: center;
+		}
+		&__item {
+			&:not(:last-child) {
+				margin-right: 15px;
+			}
+		}
+		&__icon {
+			transition: $transition;
+			&:hover,
+			:focus {
+				fill: $second-text-color;
+			}
+		}
+	}
+}
+
+.close__btn {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	width: 32px;
+	height: 32px;
+	border: none;
+	padding: 0;
+	background-color: transparent;
+	cursor: pointer;
+}
+.close__icon {
+	width: 32px;
+	height: 32px;
+}
